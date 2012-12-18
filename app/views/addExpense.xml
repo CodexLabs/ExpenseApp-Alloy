@@ -1,0 +1,13 @@
+<Alloy>
+	<Window>
+		<Toolbar>
+			<Button class="ToolbarButtonLeft" id="btnBack" onClick="btnBackCallback" >Overview</Button>
+		</Toolbar>
+		<TableView>
+            <TableViewRow title="Your info" id="btnInfo" onClick="btnInfoCallback" />
+            <TableViewRow title="Overview" id="btnOverview" onClick="btnOverviewCallback" />
+            <TableViewRow title="Add expense" id="btnAdd" onClick="btnAddCallback" />
+            <TableViewRow title="Sign and Send" id="btnSign" onClick="btnSignCallback" />
+        </TableView>
+	</Window>
+</Alloy>

@@ -1,0 +1,16 @@
+<Alloy>
+	<Collection src="Expense" />
+	<Window>
+		<Toolbar class="TopToolbar">
+			<Button class="ToolbarButtonLeft" id="btnBack" onClick="btnBackCallback">Overview</Button>
+		</Toolbar>
+		<TableView dataCollection="Expense" dataTransform="transformFunction" dataFilter="filterFunction">
+            <!-- Also can use Require -->
+            <Require id="expenseRow" src="overviewRow" onClick="expenseRowCallback" />
+        </TableView>
+		<Toolbar class="BottomToolbar">
+			<Button class="ToolbarButtonLeft" id="btnPrevious" onClick="btnPreviousCallback">Previous</Button>
+			<Button class="ToolbarButtonRight" id="btnNext" onClick="btnNextCallback">Next</Button>
+		</Toolbar>
+	</Window>
+</Alloy>

@@ -1,0 +1,18 @@
+<Alloy>
+	<Window id="win">
+		<Toolbar class="TopToolbar">
+			<Button class="ToolbarButtonLeft" id="btnBack" onClick="btnBackCallback">Overview</Button>
+		</Toolbar>
+		<ScrollView>
+			<View id="wrapper" />
+			<TextArea id="remarks" />
+			<Button id="btnClear" onClick="btnClearCallback" />
+			<Label id="lblNotify" />
+			<Switch id="notifySwitch" />
+		</ScrollView>
+		<Toolbar class="BottomToolbar">
+			<Button class="ToolbarButtonLeft" id="btnPrevious" onClick="btnPreviousCallback">Previous</Button>
+			<Button class="ToolbarButtonRight" id="btnSend" onClick="btnSendCallback">Send</Button>
+		</Toolbar>
+	</Window>
+</Alloy>

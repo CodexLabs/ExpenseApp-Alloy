@@ -1,0 +1,67 @@
+"Window": {
+	layout: "composite"
+},
+".TopToolbar":{
+	top:0,
+	height: '32dp',
+	backgroundColor: '#bbb'
+},
+".BottomToolbar":{
+	bottom:0,
+	height: '32dp',
+	backgroundColor: '#bbb'
+},
+"ScrollView": {
+	bottom: '32dp',
+	top:'32dp',
+	contentWidth: 'auto',
+	contentHeight: 'auto',
+	showVerticalScrollIndicator: true,
+	showHorizontalScrollIndicator: false
+},
+"#wrapper": { 
+	width:'95%',
+	top:'2dp',
+	height:'150dp',
+	borderColor:'#aaa',
+	borderRadius: 5,
+	borderWidth:2,
+	backgroundColor:'#fff'
+},
+"#btnClear" : {
+	backgroundImage:'/images/clear.png',
+	width:26,
+	height:27,
+	right:'20dp',
+	top:'4dp'
+},
+"#remarks": {
+	borderColor: "#999",
+	borderRadius: 5,
+	font: {fontSize:16, fontWeight:'bold'},
+	returnKeyType: Ti.UI.RETURNKEY_DONE,
+	textAlign: 'left',
+	hintText: "Remarks",
+	height: '76dp',
+	width: '60%',
+	left: '2.5%',
+	bottom:'2dp',
+	color: '#222',
+	borderStyle:Titanium.UI.INPUT_BORDERSTYLE_ROUNDED
+},
+"#lblNotify": {
+	text:'Notifications',
+	textAlign:'center',
+	width:'auto',
+	height:'auto',
+	font:{fontFamily:'Arial',fontSize:16},
+	color:'#999',
+	bottom:'50dp',
+	right:'2.5%'
+},
+"#notifySwitch": {
+	value:true,
+	width: 300, // necessary for textAlign to be effective
+	right:'2.5%',
+	bottom:'20dp'
+}

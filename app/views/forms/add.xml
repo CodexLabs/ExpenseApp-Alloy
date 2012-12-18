@@ -1,0 +1,13 @@
+<Alloy>
+	<Window>
+		<Toolbar class="TopToolbar">
+			<Button class="ToolbarButtonLeft" id="btnBack" onClick="btnBackCallback">Overview</Button>
+		</Toolbar>
+		<!-- add selectbar here -->
+		<ScrollView id="container" />
+		<Toolbar class="BottomToolbar">
+			<Button class="ToolbarButtonLeft" id="btnPrevious" onClick="btnPreviousCallback">Previous</Button>
+			<Button class="ToolbarButtonRight" id="btnNext" onClick="btnNextCallback">Next</Button>
+		</Toolbar>
+	</Window>
+</Alloy>

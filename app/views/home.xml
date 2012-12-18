@@ -1,0 +1,10 @@
+<Alloy>
+	<Window class="container">
+		<Toolbar>
+			<Button id="btnLogout" class="ToolbarButtonRight" onClick="btnLogoutCallback" >Log out</Button>
+		</Toolbar>
+		<Label id="welcomeLabel">Welcome!</Label>
+		<Button id="addButton" onClick="openAddExpenseWindow" >Add new expense</Button>
+		<Button id="overviewButton" onClick="openStatusWindow" >Overview</Button>
+	</Window>
+</Alloy>

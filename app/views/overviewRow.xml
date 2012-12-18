@@ -1,0 +1,10 @@
+<Alloy>
+	<TableViewRow>
+		<ImageView id="imgEvidence" image="{evidence}" />
+		<Label id="lblProjectCode" text="{projectCode}" />
+		<Label id="lblAmount" text="{amount} {currency}" />
+		<ImageView id="imgCalendar" />
+		<!-- <ImageView id="imgLocation" image="{DEPENDING ON expenseLocationId}" /> -->
+		<Label id="lblDate" text="on {date}" />
+	</TableViewRow>
+</Alloy>

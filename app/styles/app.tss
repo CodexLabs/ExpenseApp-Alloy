@@ -1,0 +1,41 @@
+"Window": {
+	backgroundColor:"white",
+	layout: "vertical"
+},
+"TextField": {
+	height: '40dp',
+	width: '250dp',
+	top: '10dp',
+	color: '#222',
+	borderStyle:Titanium.UI.INPUT_BORDERSTYLE_ROUNDED
+
+},
+"Button": {
+	height: '40dp',
+	width: '250dp',
+	top: '10dp',
+	color: '#222',
+	borderStyle:Titanium.UI.INPUT_BORDERSTYLE_ROUNDED
+},
+".TopToolbar": {
+	top:0,
+	height: '43dp',
+	backgroundColor: '#bbb'
+},
+".BottomToolbar": {
+	bottom:0,
+	height: '43dp',
+	backgroundColor: '#bbb'
+},
+".ToolbarButtonLeft": {
+	height: '30dp',
+	width: '80dp',
+	style: Ti.UI.iPhone.SystemButtonStyle.BORDERED,
+	left: '10dp'
+},
+".ToolbarButtonRight": {
+	height: '30dp',
+	width: '80dp',
+	style: Ti.UI.iPhone.SystemButtonStyle.BORDERED,
+	right: '10dp'
+}

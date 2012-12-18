@@ -1,0 +1,8 @@
+"Window": {
+	layout: "composite"
+},
+"TableView": {
+	top:'43dp',
+	bottom:'43dp',
+	backgroundColor:'white'
+}

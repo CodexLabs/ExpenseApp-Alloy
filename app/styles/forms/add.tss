@@ -1,0 +1,12 @@
+"Window": {
+	layout: "composite"
+},
+"ScrollView": {
+	bottom: '43dp',
+	top: '43dp',
+	contentWidth: 'auto',
+	contentHeight: 'auto',
+	layout: 'vertical',
+	showVerticalScrollIndicator: true,
+	showHorizontalScrollIndicator: false
+}

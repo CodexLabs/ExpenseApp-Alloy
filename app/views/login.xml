@@ -1,0 +1,8 @@
+<Alloy>
+	<Window class="container">
+		<Label id="instructions">Please log in</Label>
+		<TextField id="email" />
+		<TextField id="password" />
+		<Button id="btnLogin" onClick="btnLoginCallback">Log in</Button>
+	</Window>
+</Alloy>

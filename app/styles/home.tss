@@ -1,0 +1,7 @@
+"Label" : {
+	top: '10dp',
+	color:'#999',
+	font:{fontSize:20,fontFamily:'Helvetica Neue'},
+	textAlign:'center',
+	width:'auto'
+}

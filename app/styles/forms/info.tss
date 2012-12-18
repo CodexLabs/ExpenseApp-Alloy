@@ -1,0 +1,38 @@
+"Window": {
+	layout: "composite"
+},
+"ScrollView": {
+	bottom: '43dp',
+	top: '43dp',
+	contentWidth: 'auto',
+	contentHeight: 'auto',
+	layout: 'vertical',
+	showVerticalScrollIndicator: true,
+	showHorizontalScrollIndicator: false
+},
+"#monthPicker": {
+	hintText: 'Date',
+	editable:false
+},
+"#txtFirstName": {
+	hintText: "First Name",
+	enabled:false
+},
+"#txtLastName": {
+	hintText: "Last Name",
+	enabled:false
+},
+"#txtEmployeeNumber": {
+	hintText: "Employee Number",
+	keyboardType: Ti.UI.KEYBOARD_NUMBER_PAD
+},
+"#unitPicker": {
+	hintText: 'Unit',
+	editable:false
+},
+"#txtEmail": {
+	hintText: "Email",
+	keyboardType: Ti.UI.KEYBOARD_EMAIL
+}
+
+

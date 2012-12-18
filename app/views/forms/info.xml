@@ -1,0 +1,18 @@
+<Alloy>
+	<Window>
+		<Toolbar class="TopToolbar">
+			<Button class="ToolbarButtonLeft" id="btnBack" onClick="btnBackCallback">Overview</Button>
+		</Toolbar>
+		<ScrollView>
+			<TextField id="monthPicker" />
+			<TextField id="txtFirstName" />
+			<TextField id="txtLastName" />
+			<TextField id="txtEmployeeNumber" />
+			<TextField id="unitPicker" />
+			<TextField id="txtEmail" />
+		</ScrollView>
+		<Toolbar class="BottomToolbar">
+			<Button class="ToolbarButtonRight" id="btnNext" onClick="btnNextCallback">Next</Button>
+		</Toolbar>
+	</Window>
+</Alloy>

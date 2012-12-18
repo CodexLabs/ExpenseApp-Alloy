@@ -1,0 +1,16 @@
+"Label": {
+	height: '40dp',
+	width: '250dp',
+	top: '10dp'
+},
+"#email": {
+	value: "bert.outtier@student.kuleuven.be", //For testing purposes
+	hintText : 'Email',
+	autocapitalization: Ti.UI.TEXT_AUTOCAPITALIZATION_NONE,
+	keyboardType: Ti.UI.KEYBOARD_EMAIL
+},
+"#password": {
+	value: "test123", // For testing purposes
+	hintText : 'Password',
+	passwordMask : true
+}

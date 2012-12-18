@@ -1,0 +1,9 @@
+<Alloy>
+	<Window>
+		<Toolbar>
+			<Button class="ToolbarButtonLeft" id="overviewButton">Overview</Button>
+		</Toolbar>
+		<TableView>
+		</TableView>
+	</Window>
+</Alloy>
