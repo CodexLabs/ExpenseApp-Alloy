@@ -4,7 +4,7 @@ function Controller() {
     }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
     $model = arguments[0] ? arguments[0].$model : null;
-    var $ = this, exports = {};
+    var $ = this, exports = {}, __defers = {};
     $.__views.login = A$(Ti.UI.createWindow({
         backgroundColor: "white",
         layout: "vertical",
@@ -54,21 +54,26 @@ function Controller() {
         id: "btnLogin"
     }), "Button", $.__views.login);
     $.__views.login.add($.__views.btnLogin);
-    $.__views.btnLogin.on("click", function() {
-        btnLoginCallback.apply(this, Array.prototype.slice.apply(arguments));
-    });
+    btnLoginCallback ? $.__views.btnLogin.on("click", btnLoginCallback) : __defers["$.__views.btnLogin!click!btnLoginCallback"] = !0;
+    exports.destroy = function() {};
     _.extend($, $.__views);
     var user = Alloy.Models.Employee;
-    user.on("loginSucces", function() {
+    user.on("loginSucces", function(e) {
         Ti.API.info("Login succeeded. Now fetching user data...");
+        user.set(e);
+        user.save();
+        Ti.API.info(user.transform());
         user.fetchInfo();
     });
     user.on("loginFailed", function(e) {
         Ti.API.error("Failed to login user.");
         alert("login failed: " + e.message + e.index);
     });
-    user.on("fetchInfoSucces", function() {
+    user.on("fetchInfoSucces", function(e) {
         Ti.API.info("Fetch user info succeeded.");
+        user.set(e);
+        user.save();
+        Ti.API.info(this.transform());
         var home = Alloy.createController("home").getView();
         home.open();
     });
@@ -76,6 +81,10 @@ function Controller() {
         Ti.API.error("Failed to fetch user info.");
         alert("login failed: " + e.message);
     });
+    Ti.App.addEventListener("loggedin", function() {
+        Ti.API.info("LOOOOOOOOOOOL");
+    });
+    __defers["$.__views.btnLogin!click!btnLoginCallback"] && $.__views.btnLogin.on("click", btnLoginCallback);
     _.extend($, exports);
 }
 

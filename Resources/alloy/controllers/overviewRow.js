@@ -1,7 +1,7 @@
 function Controller() {
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
     $model = arguments[0] ? arguments[0].$model : null;
-    var $ = this, exports = {};
+    var $ = this, exports = {}, __defers = {};
     $.__views.overviewRow = A$(Ti.UI.createTableViewRow({
         className: "expense",
         selectedBackgroundColor: "white",
@@ -72,6 +72,7 @@ function Controller() {
         text: "on {date}"
     }), "Label", $.__views.overviewRow);
     $.__views.overviewRow.add($.__views.lblDate);
+    exports.destroy = function() {};
     _.extend($, $.__views);
     _.extend($, exports);
 }

@@ -20,17 +20,12 @@ exports.definition = {
 		},
 		"adapter": {
 			"type": "sql",
-			"collection_name": "Employees"
+			"collection_name": "Employee"
 		}
 	},		
 
 	extendModel: function(Model) {		
 		_.extend(Model.prototype, {
-			validate: function( attributes ){
-	            if( attributes.age < 0 && attributes.name != "Dr Manhatten" ){
-	                return "You can't be negative years old";
-	            }
-	        },
 			login: function(email, password) {
 				
 				var model = this;
@@ -43,11 +38,8 @@ exports.definition = {
 					
 					httpClient.onload = function() {
 						if(httpClient.responseText){
-							model.set("token", httpClient.responseText);
-							model.isAuthenticated = true;
-							
-							model.save();
-							model.trigger("loginSucces");
+							model.trigger("loginSucces", { token: httpClient.responseText });
+							Ti.App.fireEvent("Loggedin");
 						} else {
 							model.trigger("loginFailed", {message: "email/password combination wrong", index :1});
 						}						
@@ -64,10 +56,9 @@ exports.definition = {
 				
 			},
 			fetchInfo: function() {
-				
 				var model = this;
 				
-				if(model.isAuthenticated) {
+				if(model.isAuthenticated()) {
 										
 					params = {  
 				        token: model.get("token")
@@ -77,18 +68,14 @@ exports.definition = {
 		
 						if(httpClient.responseText){
 							var response = JSON.parse(httpClient.responseText);
-							
-							model.set({
-								"firstName": response.firstName,
-								"lastName": response.lastName,
-								"email": response.email,
-								"password": response.password,
-								"employeeNumber": response.employeeNumber,
-								"unitId": response.unitId
+							model.trigger("fetchInfoSucces", {
+								firstName: response.firstName,
+								lastName: response.lastName,
+								email: response.email,
+								password: response.password,
+								employeeNumber: response.employeeNumber,
+								unitId: response.unitId
 							});
-							
-							model.save();
-							model.trigger("fetchInfoSucces");
 						} else {
 							model.trigger("fetchInfoFailed", {message: "No response when getting user info."});
 						}
@@ -105,14 +92,12 @@ exports.definition = {
 			logout: function() {
 				var model = this;
 				
-				if(model.isAuthenticated) {
+				if(model.isAuthenticated()) {
 					params = {  
-				        token: model.token
+				        token: model.get('token')
 					};
-
+					
 					httpClient.onload = function() {
-						model.isAuthenticated = false;
-						model.save();
 						model.trigger('logoutSucces');
 					};
 					httpClient.onerror = function(){
@@ -124,9 +109,15 @@ exports.definition = {
 					model.trigger('logoutFailed', {message: "Can't log out. User is not authenticated!"});
 				}
 			},
-			isAuthenticated: false,
+			isAuthenticated: function() {
+				if(this.get('token')) {
+					return true;
+				} else {
+					return false;
+				}
+			},
 			fullName: function() {
-				this.get("firstName") + " " + this.get("lastName");
+				return this.get("firstName") + " " + this.get("lastName");
 			},
 			// extended functions go here
 			transform: function() {

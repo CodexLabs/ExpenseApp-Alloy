@@ -21,7 +21,7 @@ function Controller() {
     }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
     $model = arguments[0] ? arguments[0].$model : null;
-    var $ = this, exports = {};
+    var $ = this, exports = {}, __defers = {};
     $.__views.addExpense = A$(Ti.UI.createWindow({
         backgroundColor: "white",
         layout: "vertical",
@@ -44,48 +44,44 @@ function Controller() {
         id: "btnBack"
     }), "Button", $.__views.__alloyId0);
     $.__views.__alloyId0.add($.__views.btnBack);
-    $.__views.btnBack.on("click", function() {
-        btnBackCallback.apply(this, Array.prototype.slice.apply(arguments));
-    });
-    var __alloyId2 = [];
+    btnBackCallback ? $.__views.btnBack.on("click", btnBackCallback) : __defers["$.__views.btnBack!click!btnBackCallback"] = !0;
     $.__views.btnInfo = A$(Ti.UI.createTableViewRow({
         title: "Your info",
         id: "btnInfo"
     }), "TableViewRow", null);
+    var __alloyId2 = [];
     __alloyId2.push($.__views.btnInfo);
-    $.__views.btnInfo.on("click", function() {
-        btnInfoCallback.apply(this, Array.prototype.slice.apply(arguments));
-    });
+    btnInfoCallback ? $.__views.btnInfo.on("click", btnInfoCallback) : __defers["$.__views.btnInfo!click!btnInfoCallback"] = !0;
     $.__views.btnOverview = A$(Ti.UI.createTableViewRow({
         title: "Overview",
         id: "btnOverview"
     }), "TableViewRow", null);
     __alloyId2.push($.__views.btnOverview);
-    $.__views.btnOverview.on("click", function() {
-        btnOverviewCallback.apply(this, Array.prototype.slice.apply(arguments));
-    });
+    btnOverviewCallback ? $.__views.btnOverview.on("click", btnOverviewCallback) : __defers["$.__views.btnOverview!click!btnOverviewCallback"] = !0;
     $.__views.btnAdd = A$(Ti.UI.createTableViewRow({
         title: "Add expense",
         id: "btnAdd"
     }), "TableViewRow", null);
     __alloyId2.push($.__views.btnAdd);
-    $.__views.btnAdd.on("click", function() {
-        btnAddCallback.apply(this, Array.prototype.slice.apply(arguments));
-    });
+    btnAddCallback ? $.__views.btnAdd.on("click", btnAddCallback) : __defers["$.__views.btnAdd!click!btnAddCallback"] = !0;
     $.__views.btnSign = A$(Ti.UI.createTableViewRow({
         title: "Sign and Send",
         id: "btnSign"
     }), "TableViewRow", null);
     __alloyId2.push($.__views.btnSign);
-    $.__views.btnSign.on("click", function() {
-        btnSignCallback.apply(this, Array.prototype.slice.apply(arguments));
-    });
+    btnSignCallback ? $.__views.btnSign.on("click", btnSignCallback) : __defers["$.__views.btnSign!click!btnSignCallback"] = !0;
     $.__views.__alloyId1 = A$(Ti.UI.createTableView({
         data: __alloyId2,
         id: "__alloyId1"
     }), "TableView", $.__views.addExpense);
     $.__views.addExpense.add($.__views.__alloyId1);
+    exports.destroy = function() {};
     _.extend($, $.__views);
+    __defers["$.__views.btnBack!click!btnBackCallback"] && $.__views.btnBack.on("click", btnBackCallback);
+    __defers["$.__views.btnInfo!click!btnInfoCallback"] && $.__views.btnInfo.on("click", btnInfoCallback);
+    __defers["$.__views.btnOverview!click!btnOverviewCallback"] && $.__views.btnOverview.on("click", btnOverviewCallback);
+    __defers["$.__views.btnAdd!click!btnAddCallback"] && $.__views.btnAdd.on("click", btnAddCallback);
+    __defers["$.__views.btnSign!click!btnSignCallback"] && $.__views.btnSign.on("click", btnSignCallback);
     _.extend($, exports);
 }
 

@@ -1,7 +1,7 @@
 <Alloy>
 	<Window>
 		<Toolbar>
-			<Button class="ToolbarButtonLeft" id="overviewButton">Overview</Button>
+			<Button class="ToolbarButtonLeft" id="btnBack" onClick="btnBackCallback">Overview</Button>
 		</Toolbar>
 		<TableView>
 		</TableView>

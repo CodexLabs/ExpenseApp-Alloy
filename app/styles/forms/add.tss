@@ -1,9 +1,29 @@
 "Window": {
 	layout: "composite"
 },
+"#header": {
+	top:'43dp',
+  	height: '43dp',
+  	backgroundColor: 'white',
+},
+"#header[platform=android]": {
+	top:'43dp',
+  	height: '43dp',
+  	layout: "horizontal"
+},
+"TabbedBar[platform=ios]": {
+  bottom: '6dp',
+  height: Ti.UI.SIZE,
+  width: Ti.UI.SIZE,
+  style: Ti.UI.iPhone.SystemButtonStyle.BAR,
+},
+"Switch[platform=android]": {
+  left: '10dp',
+  style: Ti.UI.Android.SWITCH_STYLE_TOGGLEBUTTON
+},
 "ScrollView": {
 	bottom: '43dp',
-	top: '43dp',
+	top: '86dp',
 	contentWidth: 'auto',
 	contentHeight: 'auto',
 	layout: 'vertical',

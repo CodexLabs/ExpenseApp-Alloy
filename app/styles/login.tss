@@ -10,7 +10,7 @@
 	keyboardType: Ti.UI.KEYBOARD_EMAIL
 },
 "#password": {
-	value: "test123", // For testing purposes
+	value: "", // For testing purposes
 	hintText : 'Password',
 	passwordMask : true
 }

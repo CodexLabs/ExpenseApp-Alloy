@@ -19,6 +19,7 @@ var Alloy = require("alloy"), Backbone = Alloy.Backbone, _ = Alloy._, Controller
         getViews: function() {
             return this.__views;
         },
+        destroy: function() {},
         getViewEx: function(opts) {
             var recurse = opts.recurse || !1;
             if (recurse) {

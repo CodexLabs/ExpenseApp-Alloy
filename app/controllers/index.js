@@ -1,7 +1,7 @@
 var user = Alloy.Models.Employee;
-user.fetch();
+Ti.API.info(user.transform());
 
-if(user.isAuthenticated) {
+if(user.isAuthenticated()) {
 	var home = Alloy.createController('home').getView();
 	home.open();
 } else {

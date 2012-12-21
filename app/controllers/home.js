@@ -1,5 +1,4 @@
 var user = Alloy.Models.Employee;
-user.fetch();
 
 function openAddExpenseWindow(e) {  
     var addExpense = Alloy.createController('addExpense').getView();
@@ -17,6 +16,9 @@ function btnLogoutCallback(e) {
 }
 
 user.on("logoutSucces", function(){
+	user.set({token : ""});
+	user.save();
+	Ti.API.info(user.transform());
 	$.home.close();
 	var login = Alloy.createController('login').getView();
 	login.open();
@@ -27,4 +29,4 @@ user.on("logoutFailed", function(e){
 	alert("Error when logging out: " + e.message);
 });
 
-$.welcomeLabel.value = user.fullName();
+$.welcomeLabel.text = "Welcome " + user.fullName() + "!";

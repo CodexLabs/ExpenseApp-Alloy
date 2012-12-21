@@ -42,7 +42,7 @@ exports.C = function(name, modelDesc, model) {
         }
     }, Collection = Backbone.Collection.extend(extendObj), config = Collection.prototype.config = model.prototype.config, type = (config.adapter ? config.adapter.type : null) || "localDefault", adapter = require("alloy/sync/" + type);
     _.isFunction(adapter.afterCollectionCreate) && adapter.afterCollectionCreate(Collection);
-    _.isFunction(modelDesc.extendModel) && (Collection = modelDesc.extendCollection(Collection) || Collection);
+    _.isFunction(modelDesc.extendCollection) && (Collection = modelDesc.extendCollection(Collection) || Collection);
     return Collection;
 };
 
@@ -149,4 +149,4 @@ exports.Collections.instance = function(name) {
 
 exports.CFG = require("alloy/CFG");
 
-exports.version = "0.3.3";
+exports.version = "0.3.4";

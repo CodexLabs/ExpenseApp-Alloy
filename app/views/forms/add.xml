@@ -3,7 +3,18 @@
 		<Toolbar class="TopToolbar">
 			<Button class="ToolbarButtonLeft" id="btnBack" onClick="btnBackCallback">Overview</Button>
 		</Toolbar>
-		<!-- add selectbar here -->
+		<View id="header" platform="ios">
+	      <TabbedBar index="0" onClick="changeGrouping">
+	        <Labels>
+	          <Label>Domestic</Label>
+	          <Label>Abroad</Label>
+	        </Labels>
+	      </TabbedBar>
+	    </View>
+	    <View id="header" platform="android">
+	      <Switch id="domesticSwitch" titleOn="Domestic" titleOff="Abroad" value="true" onClick="changeGrouping"/>
+	      <Switch id="abroadSwitch" titleOn="Abroad" titleOff="Domestic" onClick="changeGrouping"/>
+	    </View>
 		<ScrollView id="container" />
 		<Toolbar class="BottomToolbar">
 			<Button class="ToolbarButtonLeft" id="btnPrevious" onClick="btnPreviousCallback">Previous</Button>
