@@ -1,6 +1,9 @@
 function Controller() {
     function btnLoginCallback(e) {
-        user.login($.email.value, $.password.value);
+        if ($.email.value && $.password.value) {
+            var svc = require("/api/UserService");
+            svc.login($.email.value, $.password.value);
+        } else alert("Email/Password are required");
     }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
     $model = arguments[0] ? arguments[0].$model : null;
@@ -38,7 +41,7 @@ function Controller() {
         top: "10dp",
         color: "#222",
         borderStyle: Titanium.UI.INPUT_BORDERSTYLE_ROUNDED,
-        value: "test123",
+        value: "",
         hintText: "Password",
         passwordMask: !0,
         id: "password"
@@ -57,32 +60,19 @@ function Controller() {
     btnLoginCallback ? $.__views.btnLogin.on("click", btnLoginCallback) : __defers["$.__views.btnLogin!click!btnLoginCallback"] = !0;
     exports.destroy = function() {};
     _.extend($, $.__views);
-    var user = Alloy.Models.Employee;
-    user.on("loginSucces", function(e) {
-        Ti.API.info("Login succeeded. Now fetching user data...");
-        user.set(e);
-        user.save();
-        Ti.API.info(user.transform());
-        user.fetchInfo();
+    Ti.App.addEventListener("loginSuccess", function(data) {
+        var user = Alloy.Models.Employee;
+        Ti.API.info("Succesful login.");
+        user.save(data);
+        $.login.close();
+        Alloy.createController("home").getView().open();
     });
-    user.on("loginFailed", function(e) {
-        Ti.API.error("Failed to login user.");
-        alert("login failed: " + e.message + e.index);
+    Ti.App.addEventListener("loginFailed", function(data) {
+        Ti.API.error(data.message);
+        alert("Login failed: " + data.message);
     });
-    user.on("fetchInfoSucces", function(e) {
-        Ti.API.info("Fetch user info succeeded.");
-        user.set(e);
-        user.save();
-        Ti.API.info(this.transform());
-        var home = Alloy.createController("home").getView();
-        home.open();
-    });
-    user.on("fetchInfoFailed", function(e) {
-        Ti.API.error("Failed to fetch user info.");
-        alert("login failed: " + e.message);
-    });
-    Ti.App.addEventListener("loggedin", function() {
-        Ti.API.info("LOOOOOOOOOOOL");
+    Ti.App.addEventListener("loginError", function() {
+        alert("Error when trying to login");
     });
     __defers["$.__views.btnLogin!click!btnLoginCallback"] && $.__views.btnLogin.on("click", btnLoginCallback);
     _.extend($, exports);

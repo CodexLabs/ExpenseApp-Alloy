@@ -1,13 +1,7 @@
-var user = Alloy.Models.Employee;
-Ti.API.info(user.transform());
+var user = Alloy.createModel("Employee");
+user.fetch();
 
-if(user.isAuthenticated()) {
-	var home = Alloy.createController('home').getView();
-	home.open();
-} else {
-	var login = Alloy.createController('login').getView();
-	login.open();
-}
+Alloy.createController(user.validateAuth() ? 'home' : 'login').getView().open();
 
 // var home = Alloy.createController('home').getView();
 // home.open();

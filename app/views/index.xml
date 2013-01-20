@@ -1,3 +1,5 @@
 <Alloy>
 	<Model src="Employee" />
+	<Window>
+	</Window>
 </Alloy>

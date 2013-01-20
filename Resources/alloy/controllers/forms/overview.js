@@ -1,15 +1,15 @@
 function Controller() {
     function btnNextCallback(e) {
-        var add = Alloy.createController("forms/add").getView();
-        add.open();
+        Alloy.createController("forms/add").getView().open();
+        $.overview.close();
     }
     function btnPreviousCallback(e) {
-        var info = Alloy.createController("forms/info").getView();
-        info.open();
+        Alloy.createController("forms/info").getView().open();
+        $.overview.close();
     }
     function btnBackCallback(e) {
-        var addExpense = Alloy.createController("addExpense").getView();
-        addExpense.open();
+        Alloy.createController("addExpense").getView().open();
+        $.overview.close();
     }
     function expenseRowCallback(e) {}
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
@@ -22,13 +22,13 @@ function Controller() {
         id: "overview"
     }), "Window", null);
     $.addTopLevelView($.__views.overview);
-    $.__views.__alloyId22 = A$(Ti.UI.iOS.createToolbar({
+    $.__views.__alloyId26 = A$(Ti.UI.iOS.createToolbar({
         top: 0,
         height: "43dp",
         backgroundColor: "#bbb",
-        id: "__alloyId22"
+        id: "__alloyId26"
     }), "Toolbar", $.__views.overview);
-    $.__views.overview.add($.__views.__alloyId22);
+    $.__views.overview.add($.__views.__alloyId26);
     $.__views.btnBack = A$(Ti.UI.createButton({
         height: "30dp",
         width: "80dp",
@@ -39,40 +39,40 @@ function Controller() {
         left: "10dp",
         title: "Overview",
         id: "btnBack"
-    }), "Button", $.__views.__alloyId22);
-    $.__views.__alloyId22.add($.__views.btnBack);
+    }), "Button", $.__views.__alloyId26);
+    $.__views.__alloyId26.add($.__views.btnBack);
     btnBackCallback ? $.__views.btnBack.on("click", btnBackCallback) : __defers["$.__views.btnBack!click!btnBackCallback"] = !0;
-    $.__views.__alloyId23 = A$(Ti.UI.createTableView({
+    $.__views.__alloyId27 = A$(Ti.UI.createTableView({
         top: "43dp",
         bottom: "43dp",
         backgroundColor: "white",
-        id: "__alloyId23"
+        id: "__alloyId27"
     }), "TableView", $.__views.overview);
-    $.__views.overview.add($.__views.__alloyId23);
-    var __alloyId27 = function(e) {
+    $.__views.overview.add($.__views.__alloyId27);
+    var __alloyId31 = function(e) {
         var models = filterFunction(Alloy.Collections.Expense), len = models.length, rows = [];
         for (var i = 0; i < len; i++) {
-            var __alloyId25 = models[i];
-            __alloyId25.__transform = transformFunction(__alloyId25);
-            var __alloyId26 = Alloy.createController("overviewRow", {
+            var __alloyId29 = models[i];
+            __alloyId29.__transform = transformFunction(__alloyId29);
+            var __alloyId30 = Alloy.createController("overviewRow", {
                 id: "expenseRow",
-                $model: __alloyId25
+                $model: __alloyId29
             });
-            rows.push(__alloyId26.getViewEx({
+            rows.push(__alloyId30.getViewEx({
                 recurse: !0
             }));
             expenseRowCallback ? $.__views.expenseRow.on("click", expenseRowCallback) : __defers["$.__views.expenseRow!click!expenseRowCallback"] = !0;
         }
-        $.__views.__alloyId23.setData(rows);
+        $.__views.__alloyId27.setData(rows);
     };
-    Alloy.Collections.Expense.on("fetch destroy change add remove reset", __alloyId27);
-    $.__views.__alloyId28 = A$(Ti.UI.iOS.createToolbar({
+    Alloy.Collections.Expense.on("fetch destroy change add remove reset", __alloyId31);
+    $.__views.__alloyId32 = A$(Ti.UI.iOS.createToolbar({
         bottom: 0,
         height: "43dp",
         backgroundColor: "#bbb",
-        id: "__alloyId28"
+        id: "__alloyId32"
     }), "Toolbar", $.__views.overview);
-    $.__views.overview.add($.__views.__alloyId28);
+    $.__views.overview.add($.__views.__alloyId32);
     $.__views.btnPrevious = A$(Ti.UI.createButton({
         height: "30dp",
         width: "80dp",
@@ -83,8 +83,8 @@ function Controller() {
         left: "10dp",
         title: "Previous",
         id: "btnPrevious"
-    }), "Button", $.__views.__alloyId28);
-    $.__views.__alloyId28.add($.__views.btnPrevious);
+    }), "Button", $.__views.__alloyId32);
+    $.__views.__alloyId32.add($.__views.btnPrevious);
     btnPreviousCallback ? $.__views.btnPrevious.on("click", btnPreviousCallback) : __defers["$.__views.btnPrevious!click!btnPreviousCallback"] = !0;
     $.__views.btnNext = A$(Ti.UI.createButton({
         height: "30dp",
@@ -96,11 +96,11 @@ function Controller() {
         right: "10dp",
         title: "Next",
         id: "btnNext"
-    }), "Button", $.__views.__alloyId28);
-    $.__views.__alloyId28.add($.__views.btnNext);
+    }), "Button", $.__views.__alloyId32);
+    $.__views.__alloyId32.add($.__views.btnNext);
     btnNextCallback ? $.__views.btnNext.on("click", btnNextCallback) : __defers["$.__views.btnNext!click!btnNextCallback"] = !0;
     exports.destroy = function() {
-        Alloy.Collections.Expense.off("fetch destroy change add remove reset", __alloyId27);
+        Alloy.Collections.Expense.off("fetch destroy change add remove reset", __alloyId31);
     };
     _.extend($, $.__views);
     __defers["$.__views.btnBack!click!btnBackCallback"] && $.__views.btnBack.on("click", btnBackCallback);

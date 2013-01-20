@@ -1,15 +1,20 @@
 function Controller() {
     function openAddExpenseWindow(e) {
-        var addExpense = Alloy.createController("addExpense").getView();
-        addExpense.open();
+        Alloy.createController("addExpense").getView().open();
+        $.home.close();
     }
     function openStatusWindow(e) {
-        var status = Alloy.createController("status").getView();
-        status.open();
+        Alloy.createController("status").getView().open();
+        $.home.close();
     }
     function btnLogoutCallback(e) {
+        var user = Alloy.Models.Employee;
         Ti.API.info("logging out");
-        user.logout();
+        var token = user.get("token"), svc = require("/api/UserService");
+        svc.logout(token);
+        user.unset("token");
+        $.home.close();
+        Alloy.createController("login").getView().open();
     }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
     $model = arguments[0] ? arguments[0].$model : null;
@@ -75,20 +80,7 @@ function Controller() {
     exports.destroy = function() {};
     _.extend($, $.__views);
     var user = Alloy.Models.Employee;
-    user.on("logoutSucces", function() {
-        user.set({
-            token: ""
-        });
-        user.save();
-        Ti.API.info(user.transform());
-        $.home.close();
-        var login = Alloy.createController("login").getView();
-        login.open();
-    });
-    user.on("logoutFailed", function(e) {
-        Ti.API.error("Error logging out");
-        alert("Error when logging out: " + e.message);
-    });
+    user.fetch();
     $.welcomeLabel.text = "Welcome " + user.fullName() + "!";
     __defers["$.__views.btnLogout!click!btnLogoutCallback"] && $.__views.btnLogout.on("click", btnLogoutCallback);
     __defers["$.__views.addButton!click!openAddExpenseWindow"] && $.__views.addButton.on("click", openAddExpenseWindow);

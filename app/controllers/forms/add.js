@@ -1,16 +1,16 @@
 function btnNextCallback(e) {
-	var sign = Alloy.createController('forms/sign').getView();
-	sign.open();
+	Alloy.createController('forms/sign').getView().open();
+	$.add.close();
 }
 
 function btnPreviousCallback(e) {
-	var overview = Alloy.createController('forms/overview').getView();
-	overview.open();
+	Alloy.createController('forms/overview').getView().open();
+	$.add.close();
 }
 
 function btnBackCallback(e) {
-	var addExpense = Alloy.createController('addExpense').getView();
-	addExpense.open();
+	Alloy.createController('addExpense').getView().open();
+	$.add.close();
 }
 
 function changeGrouping(e) {

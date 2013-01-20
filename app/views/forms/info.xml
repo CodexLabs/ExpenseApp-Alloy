@@ -4,11 +4,11 @@
 			<Button class="ToolbarButtonLeft" id="btnBack" onClick="btnBackCallback">Overview</Button>
 		</Toolbar>
 		<ScrollView>
-			<TextField id="monthPicker"  />
+			<TextField id="monthPicker" />
 			<TextField id="txtFirstName" value="{Employee.firstName}" />
-			<TextField id="txtLastName" text="{Employee.lastName}" />
-			<TextField id="txtEmployeeNumber"  />
-			<TextField id="unitPicker" />
+			<TextField id="txtLastName" value="{Employee.lastName}" />
+			<TextField id="txtEmployeeNumber" value="{Employee.employeeNumber}"  />
+			<TextField id="unitPicker" value="{Employee.unitId}" />
 			<TextField id="txtEmail" value="{Employee.email}"  />
 		</ScrollView>
 		<Toolbar class="BottomToolbar">

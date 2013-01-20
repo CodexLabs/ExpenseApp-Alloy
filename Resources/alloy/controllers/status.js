@@ -1,7 +1,6 @@
 function Controller() {
     function btnBackCallback(e) {
-        var home = Alloy.createController("home").getView();
-        home.open();
+        Alloy.createController("home").getView().open();
     }
     require("alloy/controllers/BaseController").apply(this, Array.prototype.slice.call(arguments));
     $model = arguments[0] ? arguments[0].$model : null;
@@ -12,10 +11,10 @@ function Controller() {
         id: "status"
     }), "Window", null);
     $.addTopLevelView($.__views.status);
-    $.__views.__alloyId7 = A$(Ti.UI.iOS.createToolbar({
-        id: "__alloyId7"
+    $.__views.__alloyId8 = A$(Ti.UI.iOS.createToolbar({
+        id: "__alloyId8"
     }), "Toolbar", $.__views.status);
-    $.__views.status.add($.__views.__alloyId7);
+    $.__views.status.add($.__views.__alloyId8);
     $.__views.btnBack = A$(Ti.UI.createButton({
         height: "30dp",
         width: "80dp",
@@ -26,13 +25,13 @@ function Controller() {
         left: "10dp",
         title: "Overview",
         id: "btnBack"
-    }), "Button", $.__views.__alloyId7);
-    $.__views.__alloyId7.add($.__views.btnBack);
+    }), "Button", $.__views.__alloyId8);
+    $.__views.__alloyId8.add($.__views.btnBack);
     btnBackCallback ? $.__views.btnBack.on("click", btnBackCallback) : __defers["$.__views.btnBack!click!btnBackCallback"] = !0;
-    $.__views.__alloyId8 = A$(Ti.UI.createTableView({
-        id: "__alloyId8"
+    $.__views.__alloyId9 = A$(Ti.UI.createTableView({
+        id: "__alloyId9"
     }), "TableView", $.__views.status);
-    $.__views.status.add($.__views.__alloyId8);
+    $.__views.status.add($.__views.__alloyId9);
     exports.destroy = function() {};
     _.extend($, $.__views);
     __defers["$.__views.btnBack!click!btnBackCallback"] && $.__views.btnBack.on("click", btnBackCallback);

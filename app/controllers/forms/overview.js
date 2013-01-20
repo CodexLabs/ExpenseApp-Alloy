@@ -1,16 +1,16 @@
 function btnNextCallback(e) {
-	var add = Alloy.createController('forms/add').getView();
-	add.open();
+	Alloy.createController('forms/add').getView().open();
+	$.overview.close();
 }
 
 function btnPreviousCallback(e) {
-	var info = Alloy.createController('forms/info').getView();
-	info.open();
+	Alloy.createController('forms/info').getView().open();
+	$.overview.close();
 }
 
 function btnBackCallback(e) {
-	var addExpense = Alloy.createController('addExpense').getView();
-	addExpense.open();
+	Alloy.createController('addExpense').getView().open();
+	$.overview.close();
 }
 
 function expenseRowCallback(e) {

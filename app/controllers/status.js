@@ -1,4 +1,3 @@
 function btnBackCallback(e) {
-	var home = Alloy.createController('home').getView();
-	home.open();
+	Alloy.createController('home').getView().open();
 }

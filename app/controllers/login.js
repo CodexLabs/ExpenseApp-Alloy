@@ -1,36 +1,27 @@
-var user = Alloy.Models.Employee;
-
-function btnLoginCallback(e) {
-	user.login($.email.value, $.password.value);
+function btnLoginCallback(e) {	
+	if ($.email.value && $.password.value) {
+		var svc = require('/api/UserService');
+		svc.login($.email.value, $.password.value)
+	}
+	else
+	{
+		alert("Email/Password are required");
+	}	
 }
 
-user.on('loginSucces', function(e) {
-	Ti.API.info("Login succeeded. Now fetching user data...");
-	user.set(e);
-	user.save();
-	Ti.API.info(user.transform());
-	user.fetchInfo();
+Ti.App.addEventListener('loginSuccess', function(data){
+	var user = Alloy.Models.Employee;
+	Ti.API.info('Succesful login.');
+	user.save(data);
+	$.login.close();
+	Alloy.createController('home').getView().open();
 });
 
-user.on('loginFailed', function(e) {
-	Ti.API.error("Failed to login user.");
-	alert("login failed: " + e.message + e.index);
+Ti.App.addEventListener('loginFailed', function(data){
+	Ti.API.error(data.message);
+	alert("Login failed: " + data.message);
 });
 
-user.on('fetchInfoSucces', function(e) {	
-	Ti.API.info("Fetch user info succeeded.");
-	user.set(e);
-	user.save();
-	Ti.API.info(this.transform());	
-	var home = Alloy.createController('home').getView();
-	home.open();
-});
-
-user.on('fetchInfoFailed', function(e) {	
-	Ti.API.error("Failed to fetch user info.");
-	alert("login failed: " + e.message);
-});
-
-Ti.App.addEventListener("loggedin", function() {
-	Ti.API.info("LOOOOOOOOOOOL");
+Ti.App.addEventListener('loginError', function(){
+	alert("Error when trying to login");
 });

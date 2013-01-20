@@ -1,14 +1,14 @@
 function Controller() {
     function btnPreviousCallback(e) {
-        var add = Alloy.createController("forms/add").getView();
-        add.open();
+        Alloy.createController("forms/add").getView().open();
+        $.sign.close();
     }
     function btnSendCallback(e) {
         alert("sending");
     }
     function btnBackCallback(e) {
-        var addExpense = Alloy.createController("addExpense").getView();
-        addExpense.open();
+        Alloy.createController("addExpense").getView().open();
+        $.sign.close();
     }
     function btnClearCallback(e) {
         paint.clear();
@@ -22,13 +22,13 @@ function Controller() {
         id: "win"
     }), "Window", null);
     $.addTopLevelView($.__views.win);
-    $.__views.__alloyId29 = A$(Ti.UI.iOS.createToolbar({
+    $.__views.__alloyId33 = A$(Ti.UI.iOS.createToolbar({
         top: 0,
         height: "32dp",
         backgroundColor: "#bbb",
-        id: "__alloyId29"
+        id: "__alloyId33"
     }), "Toolbar", $.__views.win);
-    $.__views.win.add($.__views.__alloyId29);
+    $.__views.win.add($.__views.__alloyId33);
     $.__views.btnBack = A$(Ti.UI.createButton({
         height: "30dp",
         width: "80dp",
@@ -39,19 +39,19 @@ function Controller() {
         left: "10dp",
         title: "Overview",
         id: "btnBack"
-    }), "Button", $.__views.__alloyId29);
-    $.__views.__alloyId29.add($.__views.btnBack);
+    }), "Button", $.__views.__alloyId33);
+    $.__views.__alloyId33.add($.__views.btnBack);
     btnBackCallback ? $.__views.btnBack.on("click", btnBackCallback) : __defers["$.__views.btnBack!click!btnBackCallback"] = !0;
-    $.__views.__alloyId30 = A$(Ti.UI.createScrollView({
+    $.__views.__alloyId34 = A$(Ti.UI.createScrollView({
         bottom: "32dp",
         top: "32dp",
         contentWidth: "auto",
         contentHeight: "auto",
         showVerticalScrollIndicator: !0,
         showHorizontalScrollIndicator: !1,
-        id: "__alloyId30"
+        id: "__alloyId34"
     }), "ScrollView", $.__views.win);
-    $.__views.win.add($.__views.__alloyId30);
+    $.__views.win.add($.__views.__alloyId34);
     $.__views.wrapper = A$(Ti.UI.createView({
         width: "95%",
         top: "2dp",
@@ -61,8 +61,8 @@ function Controller() {
         borderWidth: 2,
         backgroundColor: "#fff",
         id: "wrapper"
-    }), "View", $.__views.__alloyId30);
-    $.__views.__alloyId30.add($.__views.wrapper);
+    }), "View", $.__views.__alloyId34);
+    $.__views.__alloyId34.add($.__views.wrapper);
     $.__views.remarks = A$(Ti.UI.createTextArea({
         borderColor: "#999",
         borderRadius: 5,
@@ -80,8 +80,8 @@ function Controller() {
         color: "#222",
         borderStyle: Titanium.UI.INPUT_BORDERSTYLE_ROUNDED,
         id: "remarks"
-    }), "TextArea", $.__views.__alloyId30);
-    $.__views.__alloyId30.add($.__views.remarks);
+    }), "TextArea", $.__views.__alloyId34);
+    $.__views.__alloyId34.add($.__views.remarks);
     $.__views.btnClear = A$(Ti.UI.createButton({
         height: 27,
         width: 26,
@@ -91,8 +91,8 @@ function Controller() {
         backgroundImage: "/images/clear.png",
         right: "20dp",
         id: "btnClear"
-    }), "Button", $.__views.__alloyId30);
-    $.__views.__alloyId30.add($.__views.btnClear);
+    }), "Button", $.__views.__alloyId34);
+    $.__views.__alloyId34.add($.__views.btnClear);
     btnClearCallback ? $.__views.btnClear.on("click", btnClearCallback) : __defers["$.__views.btnClear!click!btnClearCallback"] = !0;
     $.__views.lblNotify = A$(Ti.UI.createLabel({
         text: "Notifications",
@@ -107,23 +107,23 @@ function Controller() {
         bottom: "50dp",
         right: "2.5%",
         id: "lblNotify"
-    }), "Label", $.__views.__alloyId30);
-    $.__views.__alloyId30.add($.__views.lblNotify);
+    }), "Label", $.__views.__alloyId34);
+    $.__views.__alloyId34.add($.__views.lblNotify);
     $.__views.notifySwitch = A$(Ti.UI.createSwitch({
         value: !0,
         width: 300,
         right: "2.5%",
         bottom: "20dp",
         id: "notifySwitch"
-    }), "Switch", $.__views.__alloyId30);
-    $.__views.__alloyId30.add($.__views.notifySwitch);
-    $.__views.__alloyId31 = A$(Ti.UI.iOS.createToolbar({
+    }), "Switch", $.__views.__alloyId34);
+    $.__views.__alloyId34.add($.__views.notifySwitch);
+    $.__views.__alloyId35 = A$(Ti.UI.iOS.createToolbar({
         bottom: 0,
         height: "32dp",
         backgroundColor: "#bbb",
-        id: "__alloyId31"
+        id: "__alloyId35"
     }), "Toolbar", $.__views.win);
-    $.__views.win.add($.__views.__alloyId31);
+    $.__views.win.add($.__views.__alloyId35);
     $.__views.btnPrevious = A$(Ti.UI.createButton({
         height: "30dp",
         width: "80dp",
@@ -134,8 +134,8 @@ function Controller() {
         left: "10dp",
         title: "Previous",
         id: "btnPrevious"
-    }), "Button", $.__views.__alloyId31);
-    $.__views.__alloyId31.add($.__views.btnPrevious);
+    }), "Button", $.__views.__alloyId35);
+    $.__views.__alloyId35.add($.__views.btnPrevious);
     btnPreviousCallback ? $.__views.btnPrevious.on("click", btnPreviousCallback) : __defers["$.__views.btnPrevious!click!btnPreviousCallback"] = !0;
     $.__views.btnSend = A$(Ti.UI.createButton({
         height: "30dp",
@@ -147,8 +147,8 @@ function Controller() {
         right: "10dp",
         title: "Send",
         id: "btnSend"
-    }), "Button", $.__views.__alloyId31);
-    $.__views.__alloyId31.add($.__views.btnSend);
+    }), "Button", $.__views.__alloyId35);
+    $.__views.__alloyId35.add($.__views.btnSend);
     btnSendCallback ? $.__views.btnSend.on("click", btnSendCallback) : __defers["$.__views.btnSend!click!btnSendCallback"] = !0;
     exports.destroy = function() {};
     _.extend($, $.__views);

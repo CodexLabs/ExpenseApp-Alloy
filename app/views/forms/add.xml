@@ -15,7 +15,13 @@
 	      <Switch id="domesticSwitch" titleOn="Domestic" titleOff="Abroad" value="true" onClick="changeGrouping"/>
 	      <Switch id="abroadSwitch" titleOn="Abroad" titleOff="Domestic" onClick="changeGrouping"/>
 	    </View>
-		<ScrollView id="container" />
+		<ScrollView id="container">
+			<Picker id="datePicker" />
+			<Picker id="projectCode" />
+			<Picker id="type" />
+			<TextField id="txtAmount" />
+			<TextArea id="txtRemarks" />
+		</ScrollView>
 		<Toolbar class="BottomToolbar">
 			<Button class="ToolbarButtonLeft" id="btnPrevious" onClick="btnPreviousCallback">Previous</Button>
 			<Button class="ToolbarButtonRight" id="btnNext" onClick="btnNextCallback">Next</Button>

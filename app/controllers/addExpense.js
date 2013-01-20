@@ -1,24 +1,24 @@
 function btnBackCallback(e) {
-	var home = Alloy.createController('home').getView();
-	home.open();
+	Alloy.createController('home').getView().open();
+	$.addExpense.close();
 }
 
 function btnInfoCallback(e) {
-	var info = Alloy.createController('forms/info').getView();
-	info.open();
+	Alloy.createController('forms/info').getView().open();
+	$.addExpense.close();
 }
 
 function btnOverviewCallback(e) {
-	var overview = Alloy.createController('forms/overview').getView();
-	overview.open();
+	Alloy.createController('forms/overview').getView().open();
+	$.addExpense.close();
 }
 
 function btnAddCallback(e) {
-	var add = Alloy.createController('forms/add').getView();
-	add.open();
+	Alloy.createController('forms/add').getView().open();
+	$.addExpense.close();
 }
 
 function btnSignCallback(e) {
-	var sign = Alloy.createController('forms/sign').getView();
-	sign.open();
+	Alloy.createController('forms/sign').getView().open();
+	$.addExpense.close();
 }

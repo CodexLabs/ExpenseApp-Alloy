@@ -19,8 +19,8 @@ $.win.addEventListener('open', function() {
 
 // Callback functions
 function btnPreviousCallback(e) {
-	var add = Alloy.createController('forms/add').getView();
-	add.open();
+	Alloy.createController('forms/add').getView().open();
+	$.sign.close();
 }
 
 function btnSendCallback(e) {
@@ -28,8 +28,8 @@ function btnSendCallback(e) {
 }
 
 function btnBackCallback(e) {
-	var addExpense = Alloy.createController('addExpense').getView();
-	addExpense.open();
+	Alloy.createController('addExpense').getView().open();
+	$.sign.close();
 }
 
 function btnClearCallback(e) {
